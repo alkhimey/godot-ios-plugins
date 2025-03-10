@@ -51,15 +51,13 @@ scons platform=iphone target=debug
 
 1. After cloning this repository, go to `godot` submodule and switch to the tag of the engine version you are working with. For example, `git checkout 4.4-stable`.
 
-2. If the version is lower than 4.4, you will need to cherry-pick the commit from [here](https://github.com/godotengine/godot/pull/97510 ).  Depending on the version, it might cause a conflict in the file `drivers/vulkan/rendering_context_driver_vulkan.h` which you resolve by taking the changes from the cherry-picked commit for the conflicting section only.
+2. If the version is lower than 4.4, you will need to cherry-pick the commit from [here](https://github.com/godotengine/godot/pull/97510). Depending on the version, it might cause a conflict in the file `drivers/vulkan/rendering_context_driver_vulkan.h` which you resolve by taking the changes from the cherry-picked commit for the conflicting section only.
 
 3. Install `scons` if it is not already installed (eg `brew install scons`).
 
 4. [Build Godot for iOS target](https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_ios.html): `scons platform=ios target=editor`
 
-
 5. Run the plugin creation script. This step needs to be repeated for each of the plugins you want to use. Go to the root of this repository then run `./scripts/generate_xcframework.sh <plugin_name> <debug|release|release_debug> 4.0`. The result will be an xcframework in bin directory.
-
 
 ### Extra info
 
