@@ -1,6 +1,8 @@
 # Godot iOS plugins
 
-**Note:** iOS plugins are not editor plugins.
+> [!NOTE]
+>
+> iOS plugins are not editor plugins.
 
 [`master` branch](https://github.com/godotengine/godot-ios-plugins/tree/master) is the current development branch and can introduce breaking changes to plugin's public interface.
 [`3.3` branch](https://github.com/godotengine/godot-ios-plugins/tree/3.3)'s aim is to provide same public interface as it was before the switch to new iOS plugin system.
@@ -53,7 +55,7 @@ scons platform=iphone target=debug
 
 3. Install `scons` if it is not already installed (eg `brew install scons`).
 
-4. [Build godot for iOS target](https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_ios.html). `scons platform=ios target=editor`
+4. [Build Godot for iOS target](https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_ios.html): `scons platform=ios target=editor`
 
 
 5. Run plugin creation script. This step need to be repeated for each of the plugins you want to use. Go to the root of this repository then run `./scripts/generate_xcframework.sh <plugin_name> <debug|release|release_debug> 4.0`. The result will be an xcframework in bin directory.
@@ -83,21 +85,21 @@ scons target=<debug|release|release_debug> arch=<arch> simulator=<no|yes> plugin
 - The result `.xcframework` will be stored in the `bin/` folder as well as intermidiate `.a` binaries.
 
 
-## Adding plugins to Godot project
+## Adding plugins to a Godot project
 
 More detailed instructions can be found in the [official docs](https://docs.godotengine.org/en/stable/tutorials/platform/ios/ios_plugin.html#loading-and-using-an-existing-plugin).
 
 1. Build both release and debug xcframeworks of the desired plugin.
 
-2. In your godot game project, create `red://ios/plugin` and copy there the `<plugin name>.gdip` (from the plugin source directory in this repository) and both xcframework files for the plugin (from bin directory).
+2. In your Godot project, create `res://ios/plugin` and copy there the `<plugin name>.gdip` (from the plugin source directory in this repository) and both `*.xcframework` files for the plugin (from the `bin/` directory).
 
-3. Tap Project -> Export and select the “iOS” template. In the “Options” tab, scroll to plugins and enable the plugin.
+3. Go to **Project > Export** and select the iOS export preset (or create one if it doesn't exist already). In the **Options** tab, scroll to **Plugins** and enable the plugin.
 
 ## C\#
 
 It is possible to verify that the plugin's singleton is loaded using `Engine.HasSingleton("InAppStore")` and get access to it with `Engine.GetSingleton("InAppStore")`.
 
-The return type is always `GodotObject` and the methods which the plugin expose can be called indirectly with `Variant Call(StringName method, params Variant[] @args)` metod of `GodotObject`.
+The return type is always `GodotObject`. The methods which the plugin expose can be called indirectly with `Variant Call(StringName method, params Variant[] @args)` metod of `GodotObject`.
 
 ## Documentation
 
