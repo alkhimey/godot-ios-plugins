@@ -55,7 +55,7 @@ scons platform=iphone target=debug
 
 3. Install `scons` if it is not already installed (eg `brew install scons`).
 
-4. [Build Godot for iOS target](https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_ios.html): `scons platform=ios target=editor`
+4. [Build Godot for iOS target](https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_ios.html): `scons platform=ios target=editor`
 
 5. Run the plugin creation script. This step needs to be repeated for each of the plugins you want to use. Go to the root of this repository then run `./scripts/generate_xcframework.sh <plugin_name> <debug|release|release_debug> 4.0`. The result will be an xcframework in bin directory.
 
